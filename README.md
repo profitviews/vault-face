@@ -23,7 +23,7 @@ I designed a simple **algorithmic strategy** based on vault data:
 3. **Generate** a trading signal based on the **collateral ratio**.
 4. **Execute** trades based on the signal.
 
-👉 **You can check out the full code on [GitHub](https://github.com/profitviews/vault-face).**
+👉 See the code [here](/src/VaultFollow.py) and the notebook I used to develop it [here](/src/vault-face.ipynb).
 
 ---
 
