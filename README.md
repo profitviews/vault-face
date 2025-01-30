@@ -1,6 +1,6 @@
 # How I Used DeepSeek to Build a Profitable DeFi Trading Algorithm in One Morning
 
-AI-driven trading algorithms are revolutionizing DeFi, and DeepSeek just helped me build one **in a single morning**. In this post, I’ll show you how I leveraged DeepSeek’s coding power to streamline DeFi trading, automate vault selection, and deploy it to <span style="color:#00d26a">ProfitView</span> for real-world execution.
+AI-driven trading algorithms are revolutionizing DeFi, and DeepSeek just helped me build one **in a single morning**. In this post, I'll show you how I leveraged DeepSeek's coding power to streamline DeFi trading, automate vault selection, and deploy it to [ProfitView](https://profitview.net) for real-world execution.
 
 ## Background: Why I Wanted a DeFi Trading Algorithm  
 
