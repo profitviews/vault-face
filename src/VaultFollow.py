@@ -39,9 +39,20 @@ class Signals(Link):
     vaults_by_owner_collateral = []
     top_vaults_by_asset = {}
     weighted_collateral_for_asset = {}
+		
+	@cron.run(every=3600)  # Refresh vaults to follow every hour
+	def refresh_vault_data(self):
+		# Clear existing data
+		self.active_vaults = []
+		self.vaults_by_asset = {}
+		self.vaults_by_owner = {}
+		self.vaults_by_owner_collateral = []
+		self.top_vaults_by_asset = {}
+		self.weighted_collateral_for_asset = {}		
 
-    def on_start(self):
-        self.get_active_vaults()
+		logger.info(("Re-computing Vault data"))
+
+		self.get_active_vaults()
         self.process_vaults()
 
     def get_active_vaults(self):
@@ -182,9 +193,4 @@ class Signals(Link):
             size = 0  # Neutral position
 		
 		logger.info(f"signal: Exchange {self.exchange}, Asset: {asset}, Contract: {self.asset_to_perp[asset]}, size: {size}")
-        self.signal(self.exchange, self.asset_to_perp[asset], size=size)	
-		
-	@cron.run(every=3600)  # Refresh vaults to follow every hour
-	def refresh_vault_data(self):
-        self.get_active_vaults()
-        self.process_vaults()
+        self.signal(self.exchange, self.asset_to_perp[asset], size=size)
