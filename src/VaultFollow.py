@@ -190,7 +190,11 @@ class Signals(Link):
         elif collateral_ratio > 200:  # Vault is safe
             size = 1.0  # Go fully long
         else:
-            size = 0  # Neutral position
+			# Smooth transition between -1 and 1 based on collateral ratio
+			# Normalize ratio to 0-1 range between 150-200
+			normalized_ratio = (collateral_ratio - 150) / 50
+			# Map to -1 to 1 range
+			size = 2 * normalized_ratio - 1
 		
 		logger.info(f"signal: Exchange {self.exchange}, Asset: {asset}, Contract: {self.asset_to_perp[asset]}, size: {size}")
         self.signal(self.exchange, self.asset_to_perp[asset], size=size)
