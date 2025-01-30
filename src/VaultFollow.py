@@ -183,3 +183,8 @@ class Signals(Link):
 		
 		logger.info(f"signal: Exchange {self.exchange}, Asset: {asset}, Contract: {self.asset_to_perp[asset]}, size: {size}")
         self.signal(self.exchange, self.asset_to_perp[asset], size=size)	
+		
+	@cron.run(every=3600)  # Refresh vaults to follow every hour
+	def refresh_vault_data(self):
+        self.get_active_vaults()
+        self.process_vaults()
